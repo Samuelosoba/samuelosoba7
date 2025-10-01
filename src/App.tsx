@@ -5,6 +5,7 @@ import About from "./sections/About";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 import Nav from "./component/Nav";
+import Footer from "./component/Footer";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
       <About />
       <Projects />
       <Contact />
+      <Footer />
     </div>
   );
 }

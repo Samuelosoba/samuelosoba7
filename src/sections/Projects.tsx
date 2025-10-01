@@ -2,9 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "../component/ProjectCard";
 import { Filter } from "lucide-react";
-
-import link from "../assets/link.jpeg";
-import budge from "../assets/budge.jpeg";
 import instashots from "../assets/taskduty.png";
 import instashot from "../assets/instashots.png";
 import klar from "../assets/klar.png";
@@ -128,14 +125,11 @@ function Projects() {
           className="text-center mb-16"
         >
           <h1 className="text-5xl font-bold text-white mb-6">
-            My{" "}
-            <span className="text-blue-400">
-              Projects
-            </span>
+            My <span className="text-blue-400">Projects</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Here are some of the projects I've built using the different tools. Each
-            project showcases different aspects of full-stack development.
+            Here are some of the projects I've built using the different tools.
+            Each project showcases different aspects of full-stack development.
           </p>
         </motion.div>
 
