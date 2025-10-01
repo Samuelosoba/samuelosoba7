@@ -8,7 +8,7 @@ import Footer from "./component/Footer";
 
 export default function App() {
   return (
-    <div className="bg-gradient-to-r from-black via-gray-800 to-black max-w-7xl">
+    <div className="bg-gradient-to-r from-black via-gray-800 to-black">
       <Nav />
       <Hero
         name="Samuel"

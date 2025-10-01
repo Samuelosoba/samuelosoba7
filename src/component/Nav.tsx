@@ -7,6 +7,7 @@ const Nav: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  // Handle scroll for background
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
@@ -45,11 +46,12 @@ const Nav: React.FC = () => {
         scrolled ? "bg-black/90 shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      {/* Nav content wrapper */}
+      <div className="max-w-[1200px] mx-auto px-6 py-4 flex justify-between items-center w-full">
         {/* Logo */}
         <a
           href="#about"
-          className=" text-2xl md:text-3xl font-bold hover:text-white tracking-wide text-blue-400 transition-colors"
+          className="text-2xl md:text-3xl font-bold hover:text-white tracking-wide text-blue-400 transition-colors"
         >
           Osoba Samuel
         </a>
@@ -96,7 +98,7 @@ const Nav: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed right-4 top-16 bg-black/95 backdrop-blur-lg flex flex-col gap-4 text-white text-lg z-40 rounded-lg p-4 shadow-lg"
+            className="fixed top-16 right-0 left-0 mx-auto w-[90%] max-w-xs md:hidden bg-black/95 backdrop-blur-lg flex flex-col gap-4 text-white text-lg z-40 rounded-lg p-4 shadow-lg"
           >
             {links.map((link) => (
               <button
