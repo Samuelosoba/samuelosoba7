@@ -1,17 +1,10 @@
 // src/sections/Hero.tsx
-import { FC, useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import type { FC } from "react";
+import { motion, type Variants } from "framer-motion";
+
 import profileImg from "../assets/sam.png";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Github,
-  Linkedin,
-  Twitter,
-  GithubIcon,
-} from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
 
 interface HeroProps {
   name: string;
@@ -23,26 +16,26 @@ export const Hero: FC<HeroProps> = ({ name, role, description }) => {
   const fullText = `Hey, I'm ${name} ✨\n${role}`;
   const [displayedText, setDisplayedText] = useState<string>("");
   const [typingDone, setTypingDone] = useState<boolean>(false);
-  const socialLinks = [
-    {
-      icon: Github,
-      label: "GitHub",
-      href: "https://github.com/samuelosoba",
-      color: "hover:text-gray-400",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/samuel-osoba-9351b023b",
-      color: "hover:text-blue-400",
-    },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      href: "https://twitter.com/yourusername",
-      color: "hover:text-sky-400",
-    },
-  ];
+  // const socialLinks = [
+  //   {
+  //     icon: Github,
+  //     label: "GitHub",
+  //     href: "https://github.com/samuelosoba",
+  //     color: "hover:text-gray-400",
+  //   },
+  //   {
+  //     icon: Linkedin,
+  //     label: "LinkedIn",
+  //     href: "https://linkedin.com/in/samuel-osoba-9351b023b",
+  //     color: "hover:text-blue-400",
+  //   },
+  //   {
+  //     icon: Twitter,
+  //     label: "Twitter",
+  //     href: "https://twitter.com/yourusername",
+  //     color: "hover:text-sky-400",
+  //   },
+  // ];
 
   // typing effect
   useEffect(() => {
@@ -59,7 +52,7 @@ export const Hero: FC<HeroProps> = ({ name, role, description }) => {
   }, [fullText]);
 
   // motion variants
-  const buttonVariants = {
+  const buttonVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i: number) => ({
       opacity: 1,

@@ -1,7 +1,7 @@
 // src/sections/About.tsx
-import { FC } from "react";
-import { motion, useAnimation, AnimationControls } from "framer-motion";
-import { Code, Database, Globe, Server, LucideIcon } from "lucide-react";
+import { type FC } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { Code, Database, Globe, Server, type LucideIcon } from "lucide-react";
 import {
   SiJavascript,
   SiTypescript,

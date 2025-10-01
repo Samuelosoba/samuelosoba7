@@ -65,6 +65,7 @@ const ProjectCard = ({
         src={project.image}
         alt={project.title}
         className="w-full h-56 object-cover"
+        loading="lazy"
       />
 
       {/* Content */}

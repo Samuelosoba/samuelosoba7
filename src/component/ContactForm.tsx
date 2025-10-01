@@ -1,4 +1,4 @@
-import { useRef, useState, FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 
@@ -33,11 +33,6 @@ const ContactForm: React.FC = () => {
         }
       );
   };
-  console.log(
-    import.meta.env.VITE_EMAILJS_SERVICE_ID,
-    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-  );
 
   return (
     <motion.form
@@ -48,33 +43,55 @@ const ContactForm: React.FC = () => {
       transition={{ duration: 0.8 }}
       className="space-y-6 bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-white/10"
     >
+      {/* Name */}
       <div>
-        <label className="block text-gray-300 mb-2">Name</label>
+        <label htmlFor="from_name" className="block text-gray-300 mb-2">
+          Name
+        </label>
         <input
+          id="from_name"
           type="text"
           name="from_name"
+          placeholder="Enter your full name"
+          title="Your full name"
           required
           className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-white/10 text-white focus:ring-2 focus:ring-blue-500 outline-none"
         />
       </div>
+
+      {/* Email */}
       <div>
-        <label className="block text-gray-300 mb-2">Email</label>
+        <label htmlFor="from_email" className="block text-gray-300 mb-2">
+          Email
+        </label>
         <input
+          id="from_email"
           type="email"
           name="from_email"
+          placeholder="Enter your email"
+          title="Your email address"
           required
           className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-white/10 text-white focus:ring-2 focus:ring-blue-500 outline-none"
         />
       </div>
+
+      {/* Message */}
       <div>
-        <label className="block text-gray-300 mb-2">Message</label>
+        <label htmlFor="message" className="block text-gray-300 mb-2">
+          Message
+        </label>
         <textarea
+          id="message"
           name="message"
           rows={5}
+          placeholder="Type your message here"
+          title="Your message"
           required
           className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-white/10 text-white focus:ring-2 focus:ring-blue-500 outline-none"
         />
       </div>
+
+      {/* Submit */}
       <motion.button
         type="submit"
         disabled={loading}
@@ -85,6 +102,7 @@ const ContactForm: React.FC = () => {
         {loading ? "Sending..." : "Send Message"}
       </motion.button>
 
+      {/* Status Messages */}
       {status === "success" && (
         <p className="text-green-400 mt-4 text-center">
           ✅ Message sent successfully!
