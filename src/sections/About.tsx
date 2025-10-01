@@ -208,18 +208,21 @@ const About: FC = () => {
           {/* Profile Image */}
           <motion.div
             variants={item}
-            className="md:flex items-center hidden order-1 col-span-6"
+            className="flex items-center justify-center lg:justify-between mb-4 lg:mb-0 order-1 col-span-6"
           >
             <motion.div
               animate={{ rotate: [0, 2, -2, 0] }}
               transition={{ duration: 6, repeat: Infinity }}
               className="relative"
             >
-              <div className="w-50 h-50 rounded-full bg-blue-400 p-1">
+              {/* Outer circle */}
+              <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-50 lg:h-50 rounded-full bg-blue-400 p-1 mx-auto">
+                {/* Inner circle */}
                 <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                  <Code className="h-32 w-32 text-blue-400" />
+                  <Code className="h-16 w-16 sm:h-20 sm:w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 text-blue-400" />
                 </div>
               </div>
+              {/* Gradient overlay */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-black/20 to-white/50 animate-pulse"></div>
             </motion.div>
           </motion.div>
