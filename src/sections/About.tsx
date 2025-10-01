@@ -1,7 +1,7 @@
 // src/sections/About.tsx
 import { type FC } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { Code, Database, Globe, Server, type LucideIcon } from "lucide-react";
+import { Code } from "lucide-react";
 import {
   SiJavascript,
   SiTypescript,
@@ -18,11 +18,11 @@ import {
 } from "react-icons/si";
 
 /* ---------- types ---------- */
-interface Skill {
-  category: string;
-  icon: LucideIcon;
-  technologies: string[];
-}
+// interface Skill {
+//   category: string;
+//   icon: LucideIcon;
+//   technologies: string[];
+// }
 
 interface Experience {
   title: string;
@@ -72,41 +72,41 @@ const SpinIcon: FC<{ Icon: React.ElementType }> = ({ Icon }) => {
 
 /* ---------- main About component ---------- */
 const About: FC = () => {
-  const skills: Skill[] = [
-    {
-      category: "Frontend",
-      icon: Globe,
-      technologies: [
-        "React",
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Tailwind CSS",
-        "Framer Motion",
-      ],
-    },
-    {
-      category: "Backend",
-      icon: Server,
-      technologies: [
-        "Node.js",
-        "Express.js",
-        "RESTful APIs",
-        "Authentication",
-        "Middleware",
-      ],
-    },
-    {
-      category: "Database",
-      icon: Database,
-      technologies: ["MongoDB", "Mongoose"],
-    },
-    {
-      category: "Tools",
-      icon: Code,
-      technologies: ["Git", "npm", "Postman", "Vercel"],
-    },
-  ];
+  //   const skills: Skill[] = [
+  //     {
+  //       category: "Frontend",
+  //       icon: Globe,
+  //       technologies: [
+  //         "React",
+  //         "JavaScript",
+  //         "HTML5",
+  //         "CSS3",
+  //         "Tailwind CSS",
+  //         "Framer Motion",
+  //       ],
+  //     },
+  //     {
+  //       category: "Backend",
+  //       icon: Server,
+  //       technologies: [
+  //         "Node.js",
+  //         "Express.js",
+  //         "RESTful APIs",
+  //         "Authentication",
+  //         "Middleware",
+  //       ],
+  //     },
+  //     {
+  //       category: "Database",
+  //       icon: Database,
+  //       technologies: ["MongoDB", "Mongoose"],
+  //     },
+  //     {
+  //       category: "Tools",
+  //       icon: Code,
+  //       technologies: ["Git", "npm", "Postman", "Vercel"],
+  //     },
+  //   ];
   const icons = [
     SiJavascript,
     SiTypescript,

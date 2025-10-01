@@ -143,6 +143,7 @@ export const Hero: FC<HeroProps> = ({ name, role, description }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-400 transition"
+            title="GitHub profile"
           >
             <Github />
           </a>
@@ -151,6 +152,7 @@ export const Hero: FC<HeroProps> = ({ name, role, description }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-400 transition"
+            title="Linkedin profile"
           >
             <Linkedin />
           </a>
@@ -159,6 +161,7 @@ export const Hero: FC<HeroProps> = ({ name, role, description }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-400 transition"
+            title="Twitter profile"
           >
             <Twitter />
           </a>
