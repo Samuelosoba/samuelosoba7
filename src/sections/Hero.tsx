@@ -30,7 +30,7 @@ export const Hero: FC<HeroProps> = ({ name, role, description }) => {
     return () => clearInterval(interval);
   }, [fullText]);
 
-  // motion variants
+  // motion variantsss
   const buttonContainer: Variants = {
     hidden: {},
     visible: {
