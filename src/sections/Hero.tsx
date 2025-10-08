@@ -26,7 +26,7 @@ export const Hero: FC<HeroProps> = ({ name, role, description }) => {
         clearInterval(interval);
         setTypingDone(true);
       }
-    }, 80);
+    }, 40);
     return () => clearInterval(interval);
   }, [fullText]);
 
