@@ -124,14 +124,14 @@ const About: FC = () => {
 
   const experience: Experience[] = [
     {
-      title: "Full Stack Developer (Intern)",
+      title: "Full Stack Developer",
       company: "Tech Studio Academy, Onipanu",
-      period: "2024 - 2025",
+      period: "2023 - 2025",
       description:
-        "As a Web Development Intern at TechStudio, I collaborated in a fast-paced, agile environment to design, develop, and optimize responsive web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js). We developed an event planner web application, where users can buy book and buy tickets for listed events. My role involved writing clean, maintainable code and building full-stack features.",
+        "As a Web Development at TechStudio, I collaborated in a fast-paced, agile environment to design, develop, and optimize responsive web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js). We developed an event planner web application, where users can buy book and buy tickets for listed events. My role involved writing clean, maintainable code and building full-stack features.",
     },
     {
-      title: "Frontend Developer (Intern)",
+      title: "Frontend Developer",
       company: "FlexiSAF edusoft solution",
       period: "2025 - Present",
       description:
