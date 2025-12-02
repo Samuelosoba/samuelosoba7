@@ -16,6 +16,7 @@ import {
   SiChartdotjs,
   SiReactivex,
 } from "react-icons/si";
+import { useNavigate } from "react-router";
 
 export interface Project {
   id: number;
@@ -27,6 +28,7 @@ export interface Project {
   demo?: string;
   category?: string;
   year?: string;
+  route: string;
 }
 
 const techIcons: Record<string, FC<{ className?: string }>> = {
@@ -60,6 +62,7 @@ const ProjectCard: FC<{ project: Project; index: number }> = ({
   project,
   index,
 }) => {
+ 
   return (
     <motion.div
       custom={index}
@@ -68,6 +71,7 @@ const ProjectCard: FC<{ project: Project; index: number }> = ({
       variants={cardVariants}
       whileHover={{ scale: 1.02 }}
       className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 shadow-lg"
+      onClick={() => project.route && window.open(project.route, "_blank")}
     >
       <img
         src={project.image}

@@ -18,6 +18,7 @@ export interface Project {
   demo: string;
   category: string;
   year: string;
+  route: string;
 }
 
 function Projects() {
@@ -35,6 +36,7 @@ function Projects() {
       demo: "https://klarinstitut.vercel.app",
       category: "Full Stack",
       year: "2025",
+      route: "https://klarinstitut.vercel.app",
     },
 
     {
@@ -46,6 +48,7 @@ function Projects() {
       technologies: ["React", "Node.js", "MongoDB", "Express", "JWT"],
       github: "https://github.com/Samuelosoba/INSTASHOT",
       demo: "https://instashot-swart.vercel.app/",
+      route: "https://instashot-swart.vercel.app/",
       category: "Full Stack",
       year: "2025",
     },
@@ -58,6 +61,7 @@ function Projects() {
       technologies: ["React", "Node.js", "MongoDB", "Express", "JWT"],
       github: "https://github.com/Samuelosoba/Task-Duty",
       demo: "https://task-duty-client.vercel.app/",
+      route: "https://task-duty-client.vercel.app/",
       category: "Full Stack",
       year: "2025",
     },
@@ -70,6 +74,7 @@ function Projects() {
       technologies: ["React", "Node.js"],
       github: "",
       demo: "https://newgold22travels.ng",
+      route: "https://newgold22travels.ng",
       category: "Frontend",
       year: "2025",
     },
