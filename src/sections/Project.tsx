@@ -3,6 +3,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Calendar, Code2, Play, X } from "lucide-react";
 import { useState } from "react";
+import mindease from "../assets/image.png";
+import instashot from "../assets/instashots.png";
+import klar from "../assets/klar.png";
+import newgold from "../assets/newgold.png";
 
 type Project = {
   id: number;
@@ -13,7 +17,7 @@ type Project = {
   tech: string[];
   github: string;
   live: string;
-  category: "Fullstack" | "Frontend" | "Backend";
+  category: "Fullstack" | "Frontend" | "Backend" | "All";
   date: string;
 };
 
@@ -24,7 +28,7 @@ const projectsData: Project[] = [
     description: "German language course booking web-app.",
     longDescription:
       "A German language learning school website, using the MERN stack. The platform allows students to register and pay for courses online with a smooth, responsive interface. It includes a blog page for updates and an events page for showcasing school activities. An admin dashboard was developed to manage courses, blog posts, and events efficiently.I worked as the solo developer, collaborating with a Figma designer on the UI/UX.The app was deployed for production use, making it fully accessible to students and administrators.",
-    image: "https://picsum.photos/id/1015/800/600",
+    image: klar,
     tech: ["React", "Node.js", "Mongodb", "Tailwind"],
     github: "https://github.com/yourusername/livestream-pro",
     live: "https://klarinstitut.vercel.app",
@@ -37,46 +41,39 @@ const projectsData: Project[] = [
     description: "Modern Landing page for a travel agency.",
     longDescription:
       "I designed and developed a modern landing page for New Gold 22, a travel agency. The page showcases destinations, travel packages, and services in an engaging layout. I added clear call-to-actions to drive customer inquiries and bookings.The UI was built with React and TailwindCSS for speed and flexibility. I worked independently to deliver a professional and client-focused solution.",
-    image: "https://picsum.photos/id/201/800/600",
-    tech: ["Next.js", "TypeScript", "Supabase", "Recharts", "Tailwind"],
-    github: "https://github.com/yourusername/mediahub",
+    image: newgold,
+    tech: ["Next.js", "TypeScript", "Tailwind"],
+    github: "",
     live: "https://newgold22travels.ng",
     category: "Frontend",
     date: "Feb 2026",
   },
   {
     id: 3,
-    title: "BukkaEats – Food Delivery",
+    title: "MINDEASE",
     description:
       "A mental health web-app that has a stress-mangagement and Ai feature.",
     longDescription:
-      "A mental health app, that consist of Stress-management, sleep-optimization and time management features. It also has an Ai integrated chatbot feature. It has ",
-    image: "https://picsum.photos/id/237/800/600",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Socket.io"],
-    github: "https://github.com/yourusername/bukkaeats",
-    live: "https://bukkaeats-demo.vercel.app",
+      "A mental health app, that consist of Stress-management, sleep-optimization and time management features. It also has an Ai integrated chatbot feature. It was built with react, tailwindwcss, framer-motion ",
+    image: mindease,
+    tech: ["React", "Tailwindcss", "Framer-motion"],
+    github: "https://github.com/Samuelosoba/MindEase",
+    live: "https://mindeaseproject.vercel.app",
     category: "Frontend",
-    date: "Jan 2026",
+    date: "Sept 2025",
   },
   {
     id: 4,
-    title: "ConnectBridge Studio",
-    description:
-      "Production management tool for media shoots and model coordination.",
+    title: "INSTASHOT",
+    description: "A social media app, with real-time messaging and live feed.",
     longDescription:
-      "Built to streamline operations at The Connecting Bridge – model database, shoot scheduler, and automated timelog generator.",
-    image: "https://picsum.photos/id/870/800/600",
-    tech: [
-      "React",
-      "TypeScript",
-      "Framer Motion",
-      "Lucide",
-      "Google Sheets API",
-    ],
-    github: "https://github.com/yourusername/connectbridge-studio",
-    live: "#",
-    category: "Media",
-    date: "Apr 2026",
+      "I developed a full-featured Instagram clone using React, Node.js, and MongoDB. The app allows users to share photos and videos seamlessly. It includes like and comment functionality for interactive engagement.Users can follow and unfollow each other to build social connections.The platform features a responsive design for both web and mobile use.I handled the end-to-end development, including frontend, backend, and database.",
+    image: instashot,
+    tech: ["React", "Express", "Socket-io", "Nodejs", "Nodejs"],
+    github: "https://github.com/Samuelosoba/INSTASHOT",
+    live: "https://instashot-swart.vercel.app/",
+    category: "Fullstack",
+    date: "Sept 2024",
   },
 ];
 
@@ -90,10 +87,9 @@ export default function Projects() {
 
   const categories: Project["category"][] = [
     "All",
-    "Streaming",
-    "Web App",
-    "Dashboard",
-    "Media",
+    "Fullstack",
+    "Frontend",
+    "Backend",
   ];
 
   return (
@@ -137,8 +133,8 @@ export default function Projects() {
               onClick={() => setFilter(cat)}
               className={`px-5 py-2 md:px-6 md:py-3 rounded-2xl text-sm md:text-base font-medium transition-all ${
                 filter === cat
-                  ? "bg-white text-black shadow-lg"
-                  : "bg-zinc-900 hover:bg-zinc-800 text-zinc-300"
+                  ? "bg-black text-white shadow-lg"
+                  : "bg-white hover:bg-zinc-800 text-zinc-900"
               }`}
             >
               {cat}
@@ -175,7 +171,7 @@ export default function Projects() {
                 {/* Content */}
                 <div className="p-5 md:p-6 bg-white">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono text-emerald-500">
+                    <span className="text-xs font-mono text-red-500">
                       {project.date}
                     </span>
                     <div className="flex gap-2">
@@ -248,6 +244,8 @@ export default function Projects() {
                   />
                   <button
                     onClick={() => setSelectedProject(null)}
+                    aria-label="Close project"
+                    type="button"
                     className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-colors"
                   >
                     <X className="w-5 h-5" />

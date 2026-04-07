@@ -105,7 +105,6 @@ export default function Testimonials() {
                   </p>
 
                   <div className="flex items-center gap-6">
-                   
                     <div>
                       <h4 className="text-xl font-semibold">
                         {testimonial.name}
@@ -161,6 +160,8 @@ export default function Testimonials() {
           <div className="flex justify-center gap-3 mt-8">
             {testimonialsData.map((_, index) => (
               <button
+                type="button"
+                aria-label="dot"
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all ${

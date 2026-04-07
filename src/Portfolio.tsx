@@ -18,7 +18,7 @@ export default function Proj() {
       <Experience />
       <Project />
       <Testimonials />
-      <Contacts/>
+      <Contacts />
     </div>
   );
 }

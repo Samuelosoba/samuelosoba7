@@ -4,11 +4,7 @@ import type { FC } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Github, Linkedin, Twitter } from "lucide-react";
 
-interface HomeProps {
-  description: string;
-}
-
-export const Home: FC<HomeProps> = ({ description }) => {
+export const Home = () => {
   const fullText = `<PORTFOLIO`;
   const [displayedText, setDisplayedText] = useState<string>("");
   const [typingDone, setTypingDone] = useState<boolean>(false);
