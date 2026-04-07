@@ -22,17 +22,12 @@ function Footer() {
   ];
 
   return (
-    <footer className="grid-bg backdrop-blur-sm border-t border-white/10 text-black">
+    <footer className="grid-bg backdrop-blur-sm  border-t border-white/10 text-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="flex items-center space-x-2 mb-4 md:mb-0">
-            {/* <p className="text-gray-800 text-sm">
-              Made with <Heart className="h-4 w-4 text-red-400 inline mx-1" />{" "}
-              sam
-            </p> */}
-          </div>
+         
 
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center mx-auto justify-center space-x-6">
             {socialLinks.map((social) => (
               <motion.a
                 key={social.label}
@@ -41,7 +36,7 @@ function Footer() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className=" hover:text-blue-400 transition-colors"
+                className=" hover:text-blue-500 transition-colors"
                 aria-label={social.label}
               >
                 <social.icon className="h-5 w-5 text-red-500" />
