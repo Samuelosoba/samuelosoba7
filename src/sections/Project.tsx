@@ -1,5 +1,3 @@
-("use client");
-
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Calendar, Code2, Play, X } from "lucide-react";
 import { useState } from "react";
@@ -179,6 +177,7 @@ export default function Projects() {
                         href={project.github}
                         target="_blank"
                         onClick={(e) => e.stopPropagation()}
+                        aria-label="Visit my GitHub profile"
                         className="text-zinc-500 hover:text-zinc-900 transition-colors"
                       >
                         <Github className="w-5 h-5" />
@@ -188,6 +187,7 @@ export default function Projects() {
                           href={project.live}
                           target="_blank"
                           onClick={(e) => e.stopPropagation()}
+                          aria-label="Visit my GitHub profile"
                           className="text-zinc-500 hover:text-zinc-900 transition-colors"
                         >
                           <ExternalLink className="w-5 h-5" />

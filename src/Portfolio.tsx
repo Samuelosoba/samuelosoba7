@@ -8,6 +8,7 @@ import Experience from "./sections/Experience";
 import Project from "./sections/Project";
 import Testimonials from "./sections/Testimonial";
 import Contacts from "./sections/Contacts";
+import Footer from "./component/Footer";
 
 export default function Proj() {
   return (
@@ -19,6 +20,7 @@ export default function Proj() {
       <Project />
       <Testimonials />
       <Contacts />
+      <Footer/>
     </div>
   );
 }
