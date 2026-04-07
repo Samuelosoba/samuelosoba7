@@ -41,12 +41,12 @@ const ContactForm: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="space-y-6 bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-white/10"
+      className="space-y-6 bg-white backdrop-blur-sm rounded-xl p-8 border-2 border-gray-400"
     >
       {/* Name */}
       <div>
-        <label htmlFor="from_name" className="block text-gray-300 mb-2">
-          Name
+        <label htmlFor="from_name" className="block text-gray-400 mb-2">
+          NAME
         </label>
         <input
           id="from_name"
@@ -55,14 +55,14 @@ const ContactForm: React.FC = () => {
           placeholder="Enter your full name"
           title="Your full name"
           required
-          className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-white/10 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full px-4 py-2 rounded-lg  border border-gray-400 text-black focus:ring-2 focus:ring-black-5 outline-none"
         />
       </div>
 
       {/* Email */}
       <div>
-        <label htmlFor="from_email" className="block text-gray-300 mb-2">
-          Email
+        <label htmlFor="from_email" className="block text-gray-400 mb-2">
+          EMAIL
         </label>
         <input
           id="from_email"
@@ -71,14 +71,14 @@ const ContactForm: React.FC = () => {
           placeholder="Enter your email"
           title="Your email address"
           required
-          className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-white/10 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full px-4 py-2 rounded-lg  border border-gray-400  text-black focus:ring-2 focus:ring-black outline-none"
         />
       </div>
 
       {/* Message */}
       <div>
-        <label htmlFor="message" className="block text-gray-300 mb-2">
-          Message
+        <label htmlFor="message" className="block text-gray-400 mb-2">
+          MESSAGE
         </label>
         <textarea
           id="message"
@@ -87,7 +87,7 @@ const ContactForm: React.FC = () => {
           placeholder="Type your message here"
           title="Your message"
           required
-          className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-white/10 text-white focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full px-4 py-2 rounded-lg  border border-gray-400  text-black focus:ring-2 focus:ring-black outline-none"
         />
       </div>
 
@@ -97,7 +97,7 @@ const ContactForm: React.FC = () => {
         disabled={loading}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="w-full bg-blue-400 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-500 transition-all duration-300"
+        className="w-full bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-500 transition-all duration-300"
       >
         {loading ? "Sending..." : "Send Message"}
       </motion.button>

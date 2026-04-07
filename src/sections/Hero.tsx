@@ -124,7 +124,7 @@ export const Hero: FC<HeroProps> = ({ name, role, description }) => {
           href="https://github.com/samuelosoba"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-400 transition"
+          className="text-red-500 hover:text-blue-400 transition"
           title="GitHub profile"
         >
           <Github />
@@ -133,7 +133,7 @@ export const Hero: FC<HeroProps> = ({ name, role, description }) => {
           href="https://linkedin.com/in/samuel-osoba-9351b023b"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-400 transition"
+          className=" text-red-500 hover:text-blue-400 transition"
           title="Linkedin profile"
         >
           <Linkedin />
@@ -142,7 +142,7 @@ export const Hero: FC<HeroProps> = ({ name, role, description }) => {
           href="https://twitter.com/yourusername"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-400 transition"
+          className="text-red-500 hover:text-blue-400 transition"
           title="Twitter profile"
         >
           <Twitter />

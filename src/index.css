@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @layer utilities {
   @keyframes blink {
     50% {
@@ -8,4 +9,48 @@
   .animate-blink {
     animation: blink 1s step-start infinite;
   }
+}
+.checkers-bg {
+  width: 100%;
+  height: 100vh;
+
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #ccc 25%, transparent 25%),
+    linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%),
+    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+
+  background-size: 40px 40px;
+  background-position:
+    0 0,
+    0 20px,
+    20px -20px,
+    -20px 0px;
+}
+.grid-bg {
+  width: 100%;
+  /* height: 90vh; */
+  background-color: #ffffff;
+
+  background-image:
+    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+
+  background-size: 40px 40px; /* controls box size */
+}
+.grid-black {
+  width: 100%;
+  /* height: 90vh; */
+
+  background-image:
+    linear-gradient(to right, #ffffff 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff 1px, transparent 1px);
+
+  background-size: 40px 40px; /* controls box size */
+}
+
+body {
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
 }
