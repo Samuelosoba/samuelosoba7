@@ -17,12 +17,12 @@ type Testimonial = {
 const testimonialsData: Testimonial[] = [
   {
     id: 1,
-    name: "Adeola Johnson",
-    role: "Content Director",
-    company: "The Connecting Bridge",
+    name: "Ibukunolu A.",
+    role: "German Instructor",
+    company: "Goethe Institut",
     image: "https://picsum.photos/id/64/200/200",
     quote:
-      "Samuel is an exceptional operations intern. His ability to source high-quality models quickly and manage production logistics has significantly improved our workflow.",
+      "Excellent, professional and prompt and detailed explanation and feedback at every stage from idea to concept, to design draft and implementation, it was an experience I wish for in every project in the future. Attention to details and customer satisfaction is excellent. Price is also superb.",
     rating: 5,
   },
   {
