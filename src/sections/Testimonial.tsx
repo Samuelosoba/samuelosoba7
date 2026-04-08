@@ -27,12 +27,11 @@ const testimonialsData: Testimonial[] = [
   },
   {
     id: 2,
-    name: "Chinedu Okoro",
-    role: "Lead Developer",
-    company: "Bakkaz Information & Technology",
+    name: "Mr Rufus Osoba",
+    role: "CEO",
+    company: "NewGold22 Travels & Tours",
     image: "https://picsum.photos/id/91/200/200",
-    quote:
-      "Working with Samuel on our streaming projects was a pleasure. He writes clean, efficient code and has a great eye for both design and functionality.",
+    quote: "Excellent devlivery in web and email services",
     rating: 5,
   },
   {
@@ -119,7 +118,7 @@ export default function Testimonials() {
                   </div>
 
                   {/* Rating */}
-                  {/* <div className="flex gap-1 mt-8">
+                  <div className="flex gap-1 mt-8">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
@@ -130,7 +129,7 @@ export default function Testimonials() {
                         }`}
                       />
                     ))}
-                  </div> */}
+                  </div>
                 </motion.div>
               ))}
           </AnimatePresence>
