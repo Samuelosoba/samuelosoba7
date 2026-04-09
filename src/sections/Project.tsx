@@ -155,16 +155,29 @@ export default function Projects() {
             >
               <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition">
                 {/* Image */}
-                <div className="aspect-video w-full overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                    <Play className="w-10 h-10 text-white drop-shadow-md" />
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setSelectedProject(project)}
+                  className="group cursor-pointer"
+                >
+                  <div className="h-40 md:h-48 flex items-center justify-center bg-white rounded-2xl shadow-md hover:shadow-xl transition-all border border-zinc-200">
+                    {/* First Letter */}
+                    <span className="text-5xl md:text-6xl font-bold text-zinc-900 group-hover:text-emerald-500 transition-colors">
+                      {project.title.charAt(0)}
+                    </span>
                   </div>
-                </div>
+
+                  {/* Optional small title below */}
+                  <p className="mt-3 text-center text-sm font-medium text-zinc-600 group-hover:text-black">
+                    {project.title}
+                  </p>
+                </motion.div>
 
                 {/* Content */}
                 <div className="p-5 md:p-6 bg-white">
