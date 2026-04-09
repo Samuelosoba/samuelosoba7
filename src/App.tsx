@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Preloader from "./component/Preloader";
 import Portfolio from "./Portfolio";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+      preloader.style.opacity = "0"; // fade out
+      setTimeout(() => preloader.remove(), 500); // remove from DOM
+    }
+  }, []);
 
   return (
     <>
