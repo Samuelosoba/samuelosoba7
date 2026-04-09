@@ -154,36 +154,15 @@ export default function Projects() {
               className="group cursor-pointer"
             >
               <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition">
-                {/* Image */}
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedProject(project)}
-                  className="group cursor-pointer"
-                >
-                  <div className="h-40 md:h-48 flex items-center justify-center bg-white rounded-2xl shadow-md hover:shadow-xl transition-all border border-zinc-200">
-                    {/* First Letter */}
-                    <span className="text-5xl md:text-6xl font-bold text-zinc-900 group-hover:text-emerald-500 transition-colors">
-                      {project.title.charAt(0)}
-                    </span>
-                  </div>
-
-                  {/* Optional small title below */}
-                  <p className="mt-3 text-center text-sm font-medium text-zinc-600 group-hover:text-black">
-                    {project.title}
-                  </p>
-                </motion.div>
-
                 {/* Content */}
                 <div className="p-5 md:p-6 bg-white">
+                  <h1 className="bg-black p-3 text-white inline-block rounded-sm font-bold">
+                    {" "}
+                    {project.title.charAt(0)}
+                  </h1>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-mono text-red-500">
-                      {project.date}
+                      {/* {project.date} */}
                     </span>
                     <div className="flex gap-2">
                       <a
@@ -208,7 +187,7 @@ export default function Projects() {
                       )}
                     </div>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-semibold mb-2 group-hover:text-emerald-500 transition-colors">
+                  <h3 className="text-xl md:text-2xl font-semibold mb-2 group-hover:text-red-500 transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-zinc-600 text-sm md:text-base line-clamp-2">
