@@ -7,7 +7,7 @@ const experiences = [
     company: "Independent/Freelance",
     period: "2024–Present",
     description:
-      "Designing and developing responsive, high-performance web applications using React and modern JavaScript frameworks. Collaborating with clients globally to understand requirements, implement scalable solutions, and enhance user experience. Responsible for end-to-end development including UI/UX design, state management, API integration, and testing, ensuring projects are delivered efficiently and with high quality.",
+      "Designing and developing responsive, high-performance web applications using React and modern JavaScript frameworks. Collaborating with clients globally to understand requirements, implement scalable solutions, and enhance user experience. Responsible for end-to-end development including frontend development state management, API integration, and testing, ensuring projects are delivered efficiently and with high quality.",
   },
   {
     role: "Frontend Developer Intern",
