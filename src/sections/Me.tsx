@@ -88,13 +88,13 @@ const Me: FC = () => {
             transition={{ duration: 1.2 }}
             className="text-5xl font-bold  mb-6 relative inline-block"
           >
-            <h2 className="relative inline-block font-bold text-4xl md:text-5xl pb-2">
+            <p className="relative inline-block font-bold text-4xl md:text-5xl pb-2">
               ABOUT
               <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-20 h-[2px] bg-red-500"></span>{" "}
-            </h2>
+            </p>
           </motion.h1>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
@@ -116,7 +116,7 @@ const Me: FC = () => {
               designers to translate UI/UX concepts into seamless digital
               experiences.
             </p>
-          </motion.p>
+          </motion.div>
         </motion.div>
 
         {/* Skills Section */}

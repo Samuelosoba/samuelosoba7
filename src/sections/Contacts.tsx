@@ -64,10 +64,10 @@ export default function Contacts() {
             transition={{ duration: 1.2 }}
             className="text-5xl font-bold  mb-6 relative inline-block "
           >
-            <h2 className="relative inline-block font-bold text-4xl md:text-5xl pb-2">
+            <p className="relative inline-block font-bold text-4xl md:text-5xl pb-2">
               CONTACT
               <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-20 h-[2px] bg-red-500"></span>{" "}
-            </h2>
+            </p>
           </motion.h1>
           <p className="text-lg  max-w-3xl mx-auto">
             Have a project in mind? I'd love to hear about it. Let's discuss how

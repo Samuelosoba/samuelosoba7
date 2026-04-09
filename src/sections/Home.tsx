@@ -56,7 +56,7 @@ export const Home = () => {
         </div>
 
         {/* Description slides from the right */}
-        <motion.p
+        <motion.div
           className=" max-w-2xl text-lg text-gray-500 " // reserve height
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: typingDone ? 1 : 0, x: typingDone ? 0 : 100 }}
@@ -69,7 +69,7 @@ export const Home = () => {
             with 3+ years experience | React, Node.js & Modern Web Technologies
             | Passionate about creating seamless user experiences.
           </p>
-        </motion.p>
+        </motion.div>
 
         {/* Buttons staggered animation */}
         {/* Buttons animation from left */}

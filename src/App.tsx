@@ -1,26 +1,16 @@
-import { Hero } from "./sections/Hero";
+import { useState } from "react";
+import Preloader from "./component/Preloader";
+import Portfolio from "./Portfolio";
 
-import About from "./sections/About";
-import Projects from "./sections/Projects";
-import Contact from "./sections/Contact";
-import Nav from "./component/Nav";
-import Footer from "./component/Footer";
+function App() {
+  const [loading, setLoading] = useState(true);
 
-export default function App() {
   return (
-    <div className="bg-gradient-to-r from-black via-gray-800 to-black">
-      <Nav />
-      <Hero
-        name="Samuel"
-        role="A Fullstack Developer"
-        description="A fullstack developer with solid foundations in design. Passionate about
-        crafting seamless user experiences. I thrive at the intersection of
-        creativity and functionality."
-      />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      {loading && <Preloader onFinish={() => setLoading(false)} />}
+      {!loading && <Portfolio />}
+    </>
   );
 }
+
+export default App;
