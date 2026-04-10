@@ -66,7 +66,7 @@ export const Home = () => {
             <span className=" bg-black p-1 font-bold text-white ">
               FULLSTACK DEVELOPER
             </span>{" "}
-            with 3+ years experience | React, Node.js & Modern Web Technologies
+            with experience using | React, Node.js & Modern Web Technologies
             | Passionate about creating seamless user experiences.
           </p>
         </motion.div>

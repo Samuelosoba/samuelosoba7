@@ -20,7 +20,7 @@ const experiences = [
   {
     role: "Full Stack Developer Intern",
     company: "Techstudio Academy",
-    period: "2023 - 2025",
+    period: "2024 - 2025",
     description:
       "Built two full-stack applications using MERN stack,which including authentication systems, dashboards, and API integrations.",
   },
