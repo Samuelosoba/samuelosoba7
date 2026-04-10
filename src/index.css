@@ -10,6 +10,12 @@
     animation: blink 1s step-start infinite;
   }
 }
+html,
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  
+}
 .checkers-bg {
   width: 100%;
   height: 100vh;
@@ -72,7 +78,7 @@ body {
   background: #1e1e1e;
   border-radius: 12px;
   padding: 18px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   font-family: "Fira Code", monospace;
 }
 
@@ -88,9 +94,15 @@ body {
   border-radius: 50%;
 }
 
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
+.red {
+  background: #ff5f56;
+}
+.yellow {
+  background: #ffbd2e;
+}
+.green {
+  background: #27c93f;
+}
 
 .code {
   font-size: 14px;
