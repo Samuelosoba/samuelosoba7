@@ -1,109 +1,147 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { RESUME_URL } from "../data/links";
+
+const links = [
+  { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
-  // Handle scroll for background
+  // Solid background once the page is scrolled
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when clicking outside
+  // Close the mobile menu on outside click or Escape
   useEffect(() => {
+    if (!menuOpen) return;
     const handleClickOutside = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
-      }
+      if (!headerRef.current?.contains(e.target as Node)) setMenuOpen(false);
     };
-    if (menuOpen) document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [menuOpen]);
 
-  const links = [
-    { name: "ABOUT", href: "#about" },
-    { name: "EXPERIENCE", href: "#experience" },
-    { name: "PROJECTS", href: "#projects" },
-    { name: "CONTACT", href: "#contact" },
-  ];
-
-  const handleLinkClick = (href: string) => {
-    setMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <motion.nav
+    <motion.header
+      ref={headerRef}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0  w-full z-50 transition-colors duration-300 ${
-        scrolled ? "bg-white shadow-lg" : "bg-transparent"
+      className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
+        scrolled || menuOpen
+          ? "bg-white/90 shadow-sm backdrop-blur"
+          : "bg-transparent"
       }`}
     >
-      {/* Nav content wrapper */}
-      <div className="max-w-[1200px] mx-auto px-6 py-4 flex justify-between items-center w-full">
-        {/* Logo */}
+      <nav
+        aria-label="Main"
+        className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 font-mono"
+      >
         <a
-          href="#about"
-          className="text-xl md:text-2xl font-bold hover:text-black/30 tracking-wide text-black transition-colors"
+          href="#home"
+          onClick={closeMenu}
+          className="text-xl font-bold tracking-wide text-zinc-900 transition-colors hover:text-accent md:text-2xl"
         >
           SAMUEL.exe
         </a>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex gap-6 text-black font-medium items-center">
+        {/* Desktop links */}
+        <ul className="hidden items-center gap-8 text-sm text-zinc-700 md:flex">
           {links.map((link) => (
             <li key={link.name}>
-              <button
-                onClick={() => handleLinkClick(link.href)}
-                className="hover:text-blue-400 transition-colors"
+              <a
+                href={link.href}
+                className="transition-colors hover:text-accent"
               >
                 {link.name}
-              </button>
+              </a>
             </li>
           ))}
+          <li>
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-zinc-900 px-5 py-2 text-white transition-colors hover:bg-accent"
+            >
+              Resume
+            </a>
+          </li>
         </ul>
 
-        {/* Hamburger (Mobile) */}
+        {/* Hamburger (mobile) */}
         <button
+          type="button"
           onClick={() => setMenuOpen((prev) => !prev)}
-          className="md:hidden text-black text-3xl focus:outline-none"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          className="-mr-2 p-2 text-zinc-900 md:hidden"
         >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          {menuOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            ref={menuRef}
-            initial={{ opacity: 0, y: -20 }}
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-16 right-0 left-0 mx-auto w-[90%]  md:hidden bg-white backdrop-blur-lg flex flex-col gap-4 text-black text-lg z-40 rounded-lg p-4 shadow-lg"
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.2 }}
+            className="mx-4 mb-4 rounded-2xl border border-zinc-200 bg-white p-2 font-mono shadow-lg md:hidden"
           >
-            {links.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => handleLinkClick(link.href)}
-                className="hover:text-black/70 transition-colors text-left"
-              >
-                {link.name}
-              </button>
-            ))}
+            <ul className="flex flex-col">
+              {links.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    onClick={closeMenu}
+                    className="block rounded-xl px-4 py-3 text-zinc-800 transition-colors hover:bg-zinc-100 hover:text-accent"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+              <li className="p-2">
+                <a
+                  href={RESUME_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMenu}
+                  className="block rounded-full bg-zinc-900 px-4 py-3 text-center text-white transition-colors hover:bg-accent"
+                >
+                  Resume
+                </a>
+              </li>
+            </ul>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </motion.header>
   );
 };
 

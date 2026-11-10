@@ -1,154 +1,134 @@
-// src/sections/About.tsx
 import { type FC } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { Code } from "lucide-react";
+import { motion } from "framer-motion";
+import type { IconType } from "react-icons";
 import {
   SiJavascript,
   SiTypescript,
   SiReact,
   SiNextdotjs,
+  SiTailwindcss,
   SiNodedotjs,
   SiExpress,
   SiMongodb,
-  SiPostman,
-  SiVercel,
+  SiMysql,
   SiGit,
   SiGithub,
-  SiTailwindcss,
+  SiPostman,
+  SiVercel,
+  SiRender,
+  SiFigma,
 } from "react-icons/si";
+import SectionHeading from "../component/SectionHeading";
 
-/* ---------- variants ---------- */
+type Skill = { name: string; Icon: IconType; color: string };
 
-const SpinIcon: FC<{ Icon: React.ElementType; color: string }> = ({
-  Icon,
-  color,
-}) => {
-  const controls = useAnimation();
+const stack: { group: string; skills: Skill[] }[] = [
+  {
+    group: "Frontend",
+    skills: [
+      { name: "JavaScript", Icon: SiJavascript, color: "#E6C700" },
+      { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+      { name: "React", Icon: SiReact, color: "#149ECA" },
+      { name: "React Native", Icon: SiReact, color: "#149ECA" },
+      { name: "Next.js", Icon: SiNextdotjs, color: "#000000" },
+      { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#06B6D4" },
+    ],
+  },
+  {
+    group: "Backend",
+    skills: [
+      { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
+      { name: "Express", Icon: SiExpress, color: "#000000" },
+      { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
+      { name: "MySQL", Icon: SiMysql, color: "#4479A1" },
+    ],
+  },
+  {
+    group: "Tools & deployment",
+    skills: [
+      { name: "Git", Icon: SiGit, color: "#F05032" },
+      { name: "GitHub", Icon: SiGithub, color: "#181717" },
+      { name: "Postman", Icon: SiPostman, color: "#FF6C37" },
+      { name: "Vercel", Icon: SiVercel, color: "#000000" },
+      { name: "Render", Icon: SiRender, color: "#000000" },
+      { name: "Figma", Icon: SiFigma, color: "#F24E1E" },
+    ],
+  },
+];
 
-  const handleHoverStart = async () => {
-    await controls.start({
-      rotate: 360,
-      transition: { duration: 0.6, ease: "easeInOut" },
-    });
-    controls.set({ rotate: 0 });
-  };
-
-  return (
-    <motion.div
-      animate={controls}
-      onHoverStart={handleHoverStart}
-      className="flex items-center justify-center p-4 rounded-xl border border-black hover:shadow-lg hover:shadow-blue-500/20 transition-all cursor-pointer"
-      style={{ transformOrigin: "50% 50%" }}
-      whileHover={{ scale: 1.2 }}
-    >
-      <motion.div
-        animate={{ y: [0, -6, 0] }} // 👈 bounce
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <Icon className="h-12 w-12" style={{ color }} />
-      </motion.div>
-    </motion.div>
-  );
-};
-
-/* ---------- main About component ---------- */
 const Me: FC = () => {
-  const icons = [
-    { Icon: SiJavascript, color: "#F7DF1E" },
-    { Icon: SiTypescript, color: "#3178C6" },
-    { Icon: SiReact, color: "#61DAFB" },
-    { Icon: SiNextdotjs, color: "#000000" },
-    { Icon: SiNodedotjs, color: "#339933" },
-    { Icon: SiExpress, color: "#000000" },
-    { Icon: SiMongodb, color: "#47A248" },
-    { Icon: SiPostman, color: "#FF6C37" },
-    { Icon: SiVercel, color: "#000000" },
-    { Icon: SiGit, color: "#F05032" },
-    { Icon: SiGithub, color: "#181717" },
-    { Icon: SiTailwindcss, color: "#06B6D4" },
-  ];
-
   return (
-    <div className="py-4 grid-black bg-gray-100 " id="about">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center"
-        >
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2 }}
-            className="text-5xl font-bold  mb-6 relative inline-block"
-          >
-            <p className="relative inline-block font-bold text-4xl md:text-5xl pb-2">
-              ABOUT
-              <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-20 h-[2px] bg-red-500"></span>{" "}
-            </p>
-          </motion.h1>
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="bg-zinc-50 py-20 md:py-28"
+    >
+      <div className="mx-auto max-w-5xl px-6">
+        <SectionHeading id="about-heading" title="About" />
 
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="md:p-0 p-2 max-w-4xl text-black  md:mx-auto text-start leading-loose"
-          >
-            <p>
-              I specialize in modern{" "}
-              <span className="font-bold">FULL-STACK</span> web development,
-              with strong proficiency on the{" "}
-              <span className="font-bold">FRONTEND</span> using React, Next.js,
-              and React Native to build responsive and user-friendly interfaces.
-              On the <span className=" text-black font-bold ">BACKEND</span>, I
-              work with Node.js and Express.js to develop scalable APIs, using
-              MongoDB and MySQL for efficient data management. I also handle
-              <span className=" text-black font-bold"> DEPLOYMENT</span> using
-              platforms like Vercel, Render, and Pxxl, ensuring smooth and
-              reliable application delivery. I actively use GitHub for version
-              control and collaboration, and I enjoy working closely with Figma
-              designers to translate UI/UX concepts into seamless digital
-              experiences.
-            </p>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-3xl space-y-5 text-lg leading-relaxed text-zinc-700"
+        >
+          <p>
+            I specialize in modern <strong>full-stack</strong> web development.
+            On the <strong>frontend</strong> I use React, Next.js and React
+            Native to build responsive, user-friendly interfaces.
+          </p>
+          <p>
+            On the <strong>backend</strong> I work with Node.js and Express to
+            build scalable APIs, using MongoDB and MySQL for efficient data
+            management. I also handle <strong>deployment</strong> on platforms
+            like Vercel, Render and Pxxl, so applications ship smoothly and run
+            reliably.
+          </p>
+          <p>
+            I use GitHub for version control and collaboration, and I enjoy
+            working closely with Figma designers to turn UI/UX concepts into
+            seamless digital experiences.
+          </p>
         </motion.div>
 
-        {/* Skills Section */}
-        <section className="">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-xl font-bold text-center text-black mb-2 mt-6"
-          >
-            STACK
-          </motion.h2>
-
-          <div className="overflow-hidden w-full">
+        {/* Stack */}
+        <h3 className="mt-16 text-center text-xl font-bold uppercase tracking-wide">
+          Stack
+        </h3>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {stack.map(({ group, skills }, i) => (
             <motion.div
-              className="flex gap-6 w-max"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                repeat: Infinity,
-                duration: 15,
-                ease: "linear",
-              }}
+              key={group}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="rounded-2xl border border-zinc-200 bg-white p-6"
             >
-              {icons.concat(icons).map(({ Icon, color }, index) => (
-                <SpinIcon key={index} Icon={Icon} color={color} />
-              ))}
+              <h4 className="text-sm font-semibold uppercase tracking-widest text-zinc-500">
+                {group}
+              </h4>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {skills.map(({ name, Icon, color }) => (
+                  <li
+                    key={name}
+                    className="flex items-center gap-2 rounded-full border border-zinc-200 px-3 py-1.5 text-sm text-zinc-800 transition-colors hover:border-zinc-900"
+                  >
+                    <Icon
+                      aria-hidden="true"
+                      className="h-4 w-4"
+                      style={{ color }}
+                    />
+                    {name}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
-          </div>
-        </section>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

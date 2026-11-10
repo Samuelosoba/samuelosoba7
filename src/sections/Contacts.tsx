@@ -1,20 +1,20 @@
-"use client";
-
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import ContactForm from "../component/ContactForm";
+import SectionHeading from "../component/SectionHeading";
+import { EMAIL, socialLinks } from "../data/links";
 
 const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "samuelosoba7@gmail.com",
-    href: "mailto:samuelosoba7@gmail.com",
+    value: EMAIL,
+    href: `mailto:${EMAIL}`,
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+2348076776945",
+    value: "+234 807 677 6945",
     href: "tel:+2348076776945",
   },
   {
@@ -25,118 +25,84 @@ const contactInfo = [
   },
 ];
 
-const socialLinks = [
-  {
-    icon: Github,
-    label: "GitHub",
-    href: "https://github.com/samuelosoba",
-    color: "hover:text-gray-400",
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/samuel-osoba-9351b023b",
-    color: "hover:text-blue-400",
-  },
-  {
-    icon: Twitter,
-    label: "Twitter",
-    href: "https://twitter.com/yourusername",
-    color: "hover:text-sky-400",
-  },
-];
-
 export default function Contacts() {
   return (
-    <section id="contact" className="py-24 bg-gray-200 grid-black text-black">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2 }}
-            className="text-5xl font-bold  mb-6 relative inline-block "
-          >
-            <p className="relative inline-block font-bold text-4xl md:text-5xl pb-2">
-              CONTACT
-              <span className="absolute left-1/2 -translate-x-1/2 bottom-0 w-20 h-[2px] bg-red-500"></span>{" "}
-            </p>
-          </motion.h1>
-          <p className="text-lg  max-w-3xl mx-auto">
-            Have a project in mind? I'd love to hear about it. Let's discuss how
-            we can work together to bring your ideas to life.
-          </p>
-        </motion.div>
+    <section
+      id="contact"
+      aria-labelledby="contact-heading"
+      className="bg-zinc-50 py-20 md:py-28"
+    >
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading
+          id="contact-heading"
+          title="Contact"
+          subtitle="Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your ideas to life."
+        />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info + Socials */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
+          {/* Contact info + socials */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            {contactInfo.map((item) => (
-              <motion.div
-                key={item.label}
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-4 border-2 border-gray-400 p-4"
-              >
-                <div className="flex-shrink-0 w-14 h-14 bg-white rounded-xl flex items-center justify-center border-2 border--400">
-                  <item.icon className="h-6 w-6 text-gray-500 transition" />
-                </div>
-                <div>
-                  <p className="text-sm text-black font-bold">{item.label}</p>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      className="text-black transition-colors"
-                    >
-                      {item.value}
-                    </a>
-                  ) : (
-                    <p className="text-black">{item.value}</p>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+            {contactInfo.map((item) => {
+              const content = (
+                <>
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-zinc-700 transition-colors group-hover:text-accent">
+                    <item.icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span>
+                    <span className="block font-mono text-xs uppercase tracking-wider text-zinc-500">
+                      {item.label}
+                    </span>
+                    <span className="block text-zinc-900">{item.value}</span>
+                  </span>
+                </>
+              );
+              const cardClass =
+                "group flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-4 transition-colors";
 
-            {/* Social Links */}
-            <div className="pt-2 border-t border-white/10">
-              <div className="flex justify-center gap-4">
-                {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
+              return item.href ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={`${cardClass} hover:border-zinc-900`}
+                >
+                  {content}
+                </a>
+              ) : (
+                <div key={item.label} className={cardClass}>
+                  {content}
+                </div>
+              );
+            })}
+
+            <ul className="flex gap-3 pt-4">
+              {socialLinks.map(({ label, href, icon: Icon }) => (
+                <li key={label}>
+                  <a
+                    href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`w-12 h-12 bg-white rounded-xl flex items-center justify-center border border-white/10 text-gray-500 transition-colors ${social.color}`}
-                    aria-label={social.label}
+                    aria-label={label}
+                    className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 bg-white text-zinc-700 transition-colors hover:border-accent hover:text-accent"
                   >
-                    <social.icon className="h-6 w-6" />
-                  </motion.a>
-                ))}
-              </div>
-            </div>
+                    <Icon className="h-5 w-5" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Contact form */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className=""
+            transition={{ duration: 0.6, delay: 0.15 }}
           >
             <ContactForm />
           </motion.div>

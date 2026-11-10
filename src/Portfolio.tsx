@@ -1,26 +1,25 @@
-import React from "react";
-import Nav from "./component/Nav";
-
 import Header from "./component/Header";
+import Footer from "./component/Footer";
 import { Home } from "./sections/Home";
 import Me from "./sections/Me";
 import Experience from "./sections/Experience";
 import Project from "./sections/Project";
 import Testimonials from "./sections/Testimonial";
 import Contacts from "./sections/Contacts";
-import Footer from "./component/Footer";
 
-export default function Proj() {
+export default function Portfolio() {
   return (
-    <div className="">
+    <>
       <Header />
-      <Home />
-      <Me />
-      <Experience />
-      <Project />
-      <Testimonials />
-      <Contacts />
-      <Footer/>
-    </div>
+      <main>
+        <Home />
+        <Me />
+        <Experience />
+        <Project />
+        <Testimonials />
+        <Contacts />
+      </main>
+      <Footer />
+    </>
   );
 }

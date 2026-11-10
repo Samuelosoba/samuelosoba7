@@ -1,55 +1,34 @@
-import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
+import { emailLink, socialLinks } from "../data/links";
 
 function Footer() {
-  const socialLinks = [
-    {
-      icon: Github,
-      href: "https://github.com/Samuelosoba",
-      label: "GitHub",
-    },
-    {
-      icon: Linkedin,
-      href: "https://linkedin.com/in/samuel-osoba-9351b023b",
-      label: "LinkedIn",
-    },
-    {
-      icon: Twitter,
-      href: "https://twitter.com/yourusername",
-      label: "Twitter",
-    },
-    { icon: Mail, href: "mailto:samuelosoba7@gmail.com", label: "Email" },
-  ];
+  const links = [...socialLinks, emailLink];
 
   return (
-    <footer className="grid-bg backdrop-blur-sm  border-t border-white/10 text-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-         
+    <footer className="border-t border-zinc-200 bg-white">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 sm:flex-row sm:justify-between">
+        <p className="text-sm text-zinc-600">
+          © {new Date().getFullYear()} Samuel Osoba. All rights reserved.
+        </p>
 
-          <div className="flex items-center mx-auto justify-center space-x-6">
-            {socialLinks.map((social) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className=" hover:text-blue-500 transition-colors"
-                aria-label={social.label}
-              >
-                <social.icon className="h-5 w-5 text-red-500" />
-              </motion.a>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-6 pt-6 border-t border-white/10 text-center">
-          <p className=" text-sm">
-            © {new Date().getFullYear()} Samuel Osoba. All rights reserved.
-          </p>
-        </div>
+        <ul className="flex items-center gap-2">
+          {links.map(({ label, href, icon: Icon }) => {
+            const external = href.startsWith("http");
+            return (
+              <li key={label}>
+                <a
+                  href={href}
+                  {...(external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  aria-label={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-accent"
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </footer>
   );

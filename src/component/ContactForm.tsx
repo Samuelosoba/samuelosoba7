@@ -1,6 +1,11 @@
 import { useRef, useState, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
-import { motion } from "framer-motion";
+import { EMAIL } from "../data/links";
+
+const inputClass =
+  "w-full rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-zinc-900 placeholder:text-zinc-500 transition-colors focus:border-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900/15";
+
+const labelClass = "mb-2 block font-mono text-sm font-medium text-zinc-700";
 
 const ContactForm: React.FC = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -19,7 +24,7 @@ const ContactForm: React.FC = () => {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )
       .then(
         () => {
@@ -30,90 +35,81 @@ const ContactForm: React.FC = () => {
         () => {
           setStatus("error");
           setLoading(false);
-        }
+        },
       );
   };
 
   return (
-    <motion.form
+    <form
       ref={formRef}
       onSubmit={sendEmail}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="space-y-6 bg-white backdrop-blur-sm rounded-xl p-8 border-2 border-gray-400"
+      className="space-y-5 rounded-2xl border border-zinc-200 bg-white p-6 sm:p-8"
     >
-      {/* Name */}
       <div>
-        <label htmlFor="from_name" className="block text-gray-400 mb-2">
-          NAME
+        <label htmlFor="from_name" className={labelClass}>
+          Name
         </label>
         <input
           id="from_name"
           type="text"
           name="from_name"
-          placeholder="Enter your full name"
-          title="Your full name"
+          autoComplete="name"
+          placeholder="Your full name"
           required
-          className="w-full px-4 py-2 rounded-lg  border border-gray-400 text-black focus:ring-2 focus:ring-black-5 outline-none"
+          className={inputClass}
         />
       </div>
 
-      {/* Email */}
       <div>
-        <label htmlFor="from_email" className="block text-gray-400 mb-2">
-          EMAIL
+        <label htmlFor="from_email" className={labelClass}>
+          Email
         </label>
         <input
           id="from_email"
           type="email"
           name="from_email"
-          placeholder="Enter your email"
-          title="Your email address"
+          autoComplete="email"
+          placeholder="you@example.com"
           required
-          className="w-full px-4 py-2 rounded-lg  border border-gray-400  text-black focus:ring-2 focus:ring-black outline-none"
+          className={inputClass}
         />
       </div>
 
-      {/* Message */}
       <div>
-        <label htmlFor="message" className="block text-gray-400 mb-2">
-          MESSAGE
+        <label htmlFor="message" className={labelClass}>
+          Message
         </label>
         <textarea
           id="message"
           name="message"
           rows={5}
-          placeholder="Type your message here"
-          title="Your message"
+          placeholder="Tell me about your project"
           required
-          className="w-full px-4 py-2 rounded-lg  border border-gray-400  text-black focus:ring-2 focus:ring-black outline-none"
+          className={inputClass}
         />
       </div>
 
-      {/* Submit */}
-      <motion.button
+      <button
         type="submit"
         disabled={loading}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="w-full bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-500 transition-all duration-300"
+        className="w-full rounded-full bg-zinc-900 px-6 py-3 font-mono text-white transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {loading ? "Sending..." : "Send Message"}
-      </motion.button>
+        {loading ? "Sending…" : "Send message"}
+      </button>
 
-      {/* Status Messages */}
-      {status === "success" && (
-        <p className="text-green-400 mt-4 text-center">
-          ✅ Message sent successfully!
-        </p>
-      )}
-      {status === "error" && (
-        <p className="text-red-400 mt-4 text-center">
-          ❌ Something went wrong. Try again.
-        </p>
-      )}
-    </motion.form>
+      <p role="status" aria-live="polite" className="text-center text-sm">
+        {status === "success" && (
+          <span className="text-green-700">
+            Message sent. I'll get back to you soon.
+          </span>
+        )}
+        {status === "error" && (
+          <span className="text-red-700">
+            Something went wrong. Please try again or email me at {EMAIL}.
+          </span>
+        )}
+      </p>
+    </form>
   );
 };
 

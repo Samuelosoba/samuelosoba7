@@ -1,71 +1,64 @@
 @import "tailwindcss";
 
-@layer utilities {
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
-  .animate-blink {
-    animation: blink 1s step-start infinite;
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
-html,
-body {
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  
-}
-.checkers-bg {
-  width: 100%;
-  height: 100vh;
 
-  background-color: #fff;
-  background-image:
-    linear-gradient(45deg, #ccc 25%, transparent 25%),
-    linear-gradient(-45deg, #ccc 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #ccc 75%),
-    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo,
+    monospace;
 
-  background-size: 40px 40px;
-  background-position:
-    0 0,
-    0 20px,
-    20px -20px,
-    -20px 0px;
+  /* The single accent color used across the site (red-600, AA on white). */
+  --color-accent: #dc2626;
+
+  --animate-blink: blink 1s step-start infinite;
 }
+
+@layer base {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-white text-zinc-900 antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-mono);
+  }
+
+  /* Keep section titles clear of the fixed header when jumping via nav links. */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Light grid used behind the hero only. */
 .grid-bg {
-  width: 100%;
-  /* height: 90vh; */
   background-color: #ffffff;
-
   background-image:
     linear-gradient(to right, #e5e7eb 1px, transparent 1px),
     linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
-
-  background-size: 40px 40px; /* controls box size */
-}
-.grid-black {
-  width: 100%;
-  /* height: 90vh; */
-
-  background-image:
-    linear-gradient(to right, #ffffff 1px, transparent 1px),
-    linear-gradient(to bottom, #ffffff 1px, transparent 1px);
-
-  background-size: 40px 40px; /* controls box size */
+  background-size: 40px 40px;
 }
 
-body {
-  font-family: "JetBrains Mono", monospace;
-  font-optical-sizing: auto;
-}
+/* ---------- Preloader ---------- */
 .preloader {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  inset: 0;
   background: #ffffff;
   display: flex;
   align-items: center;
@@ -74,12 +67,12 @@ body {
 }
 
 .editor {
-  width: 420px;
+  width: min(420px, calc(100vw - 32px));
   background: #1e1e1e;
   border-radius: 12px;
   padding: 18px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  font-family: "Fira Code", monospace;
+  font-family: var(--font-mono);
 }
 
 .dots {
@@ -110,32 +103,29 @@ body {
   color: #d4d4d4;
 }
 
-/* Syntax Highlighting */
+/* Syntax highlighting */
 .key {
-  color: #569cd6; /* blue */
+  color: #569cd6;
 }
-
 .string {
-  color: #ce9178; /* orange */
+  color: #ce9178;
 }
-
 .number {
-  color: #b5cea8; /* green */
+  color: #b5cea8;
 }
-
 .colon {
   color: #d4d4d4;
 }
 
-/* Cursor blinking */
 .code::after {
   content: "|";
   margin-left: 5px;
   animation: blink 1s infinite;
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
+@media (prefers-reduced-motion: reduce) {
+  .animate-blink,
+  .code::after {
+    animation: none;
   }
 }
